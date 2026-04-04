@@ -1,0 +1,749 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+    <title>
+      Aditya Banerjee | Full Stack Developer — Glassmorphism Portfolio
+    </title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome 6 -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <!-- Google Fonts: Inter + Fira Code -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700&family=Fira+Code:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              navy: "#0a192f",
+              lightNavy: "#112240",
+              slate: "#8892b0",
+              lightSlate: "#a8b2d1",
+              white: "#ccd6f6",
+              teal: "#64ffda",
+              glass: "rgba(17, 34, 64, 0.55)",
+            },
+            fontFamily: {
+              sans: ["Inter", "sans-serif"],
+              mono: ["Fira Code", "monospace"],
+            },
+            backdropBlur: {
+              xs: "2px",
+            },
+            animation: {
+              float: "float 6s ease-in-out infinite",
+              "glow-pulse": "glowPulse 2s ease-in-out infinite",
+            },
+            keyframes: {
+              float: {
+                "0%, 100%": { transform: "translateY(0px)" },
+                "50%": { transform: "translateY(-10px)" },
+              },
+              glowPulse: {
+                "0%, 100%": {
+                  textShadow: "0 0 2px #64ffda, 0 0 5px rgba(100,255,218,0.3)",
+                },
+                "50%": {
+                  textShadow: "0 0 8px #64ffda, 0 0 12px rgba(100,255,218,0.6)",
+                },
+              },
+            },
+          },
+        },
+      };
+    </script>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        background: radial-gradient(circle at 10% 20%, #0a192f, #051021);
+        scroll-behavior: smooth;
+        font-family: "Inter", sans-serif;
+      }
+
+      /* custom scrollbar refined */
+      ::-webkit-scrollbar {
+        width: 6px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #0a192f;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #2a3f5e;
+        border-radius: 10px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #64ffda;
+      }
+
+      /* glass morphism core */
+      .glass-card {
+        background: rgba(17, 34, 64, 0.4);
+        backdrop-filter: blur(12px);
+        border: 1px solid rgba(100, 255, 218, 0.2);
+        border-radius: 1.5rem;
+        transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+        box-shadow: 0 8px 20px -6px rgba(0, 0, 0, 0.3);
+      }
+
+      .glass-card:hover {
+        border-color: #64ffda;
+        background: rgba(17, 34, 64, 0.65);
+        transform: translateY(-6px);
+        box-shadow: 0 20px 30px -12px rgba(0, 0, 0, 0.5);
+      }
+
+      /* nav glass */
+      .nav-glass {
+        background: rgba(10, 25, 47, 0.7);
+        backdrop-filter: blur(16px);
+        border-bottom: 1px solid rgba(100, 255, 218, 0.15);
+      }
+
+      .nav-link {
+        position: relative;
+        transition: color 0.2s ease;
+      }
+      .nav-link::after {
+        content: "";
+        position: absolute;
+        bottom: -4px;
+        left: 0;
+        width: 0%;
+        height: 1px;
+        background: #64ffda;
+        transition: width 0.3s ease;
+      }
+      .nav-link:hover::after {
+        width: 100%;
+      }
+
+      .skill-tag {
+        background: rgba(100, 255, 218, 0.08);
+        backdrop-filter: blur(4px);
+        font-size: 0.75rem;
+        padding: 6px 12px;
+        border: 0.5px solid rgba(100, 255, 218, 0.4);
+        color: #c1e4ff;
+        border-radius: 40px;
+        margin: 4px;
+        display: inline-block;
+        font-family: "Fira Code", monospace;
+        transition: all 0.2s;
+      }
+      .skill-tag:hover {
+        background: rgba(100, 255, 218, 0.2);
+        border-color: #64ffda;
+        color: #64ffda;
+        transform: scale(1.02);
+      }
+
+      #mobile-menu {
+        transition: transform 0.4s ease-in-out;
+        backdrop-filter: blur(20px);
+        background: rgba(10, 25, 47, 0.95);
+      }
+      .hidden-menu {
+        transform: translateX(100%);
+      }
+
+      /* animated hero underline */
+      .hero-cta {
+        transition: all 0.3s;
+      }
+      .hero-cta:hover {
+        background: rgba(100, 255, 218, 0.12);
+        box-shadow: 0 0 12px rgba(100, 255, 218, 0.3);
+      }
+
+      /* floating bg shapes */
+      .blob-bg {
+        position: fixed;
+        width: 40vw;
+        height: 40vw;
+        background: radial-gradient(
+          circle,
+          rgba(100, 255, 218, 0.08) 0%,
+          rgba(100, 255, 218, 0) 70%
+        );
+        border-radius: 50%;
+        z-index: -1;
+        pointer-events: none;
+        filter: blur(70px);
+      }
+
+      /* contact glass card style for phone number */
+      .contact-info-card {
+        background: rgba(17, 34, 64, 0.3);
+        backdrop-filter: blur(8px);
+        border: 1px solid rgba(100, 255, 218, 0.2);
+        transition: all 0.2s ease;
+      }
+      .contact-info-card:hover {
+        border-color: #64ffda;
+        background: rgba(17, 34, 64, 0.5);
+        transform: translateY(-3px);
+      }
+    </style>
+  </head>
+  <body class="text-white antialiased relative">
+    <!-- animated background orbs (transparent ui depth) -->
+    <div
+      class="blob-bg top-20 -left-20 animate-pulse"
+      style="animation-duration: 18s"
+    ></div>
+    <div
+      class="blob-bg bottom-20 right-0 w-[35vw] h-[35vw] bg-teal/5"
+      style="filter: blur(90px); animation-delay: -5s"
+    ></div>
+
+    <!-- Navigation Glassmorphism -->
+    <nav
+      class="fixed top-0 w-full z-50 nav-glass px-6 py-3 shadow-xl transition-all duration-300"
+    >
+      <div class="max-w-6xl mx-auto flex justify-between items-center">
+        <div
+          class="text-teal font-bold text-2xl font-mono cursor-pointer tracking-tighter hover:drop-shadow-glow transition"
+          onclick="window.scrollTo({ top: 0, behavior: 'smooth' })"
+        >
+          &lt;AB /&gt;
+        </div>
+
+        <!-- Desktop menu -->
+        <div
+          class="hidden md:flex items-center space-x-10 font-mono text-[11px] uppercase tracking-wider"
+        >
+          <a href="#about" class="nav-link text-lightSlate hover:text-teal"
+            ><span class="text-teal"></span> About</a
+          >
+          <a href="#skills" class="nav-link text-lightSlate hover:text-teal"
+            ><span class="text-teal"></span> Skills</a
+          >
+          <a href="#experience" class="nav-link text-lightSlate hover:text-teal"
+            ><span class="text-teal"></span> Experience</a
+          >
+          <a href="#education" class="nav-link text-lightSlate hover:text-teal"
+            ><span class="text-teal"></span> Education</a
+          >
+          <a href="#contact" class="nav-link text-lightSlate hover:text-teal"
+            ><span class="text-teal"></span> Contact</a
+          >
+          <a
+            href="#"
+            target="_blank"
+            class="border border-teal/70 px-5 py-2 rounded-full text-teal text-[12px] hover:bg-teal/10 hover:border-teal transition-all backdrop-blur-sm"
+            >Resume</a
+          >
+        </div>
+
+        <!-- Mobile toggle -->
+        <button
+          id="menu-btn"
+          class="md:hidden text-teal text-2xl focus:outline-none"
+        >
+          <i class="fa-solid fa-bars-staggered"></i>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Mobile Sidebar Menu (transparent effect) -->
+    <div
+      id="mobile-menu"
+      class="fixed inset-0 z-40 hidden-menu md:hidden flex flex-col items-center justify-center space-y-8 font-mono text-xl backdrop-blur-2xl"
+    >
+      <button id="close-btn" class="absolute top-6 right-6 text-teal text-3xl">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+      <a href="#about" class="mobile-link text-white hover:text-teal transition"
+        >About</a
+      >
+      <a
+        href="#skills"
+        class="mobile-link text-white hover:text-teal transition"
+        >Skills</a
+      >
+      <a
+        href="#experience"
+        class="mobile-link text-white hover:text-teal transition"
+        >Experience</a
+      >
+      <a
+        href="#education"
+        class="mobile-link text-white hover:text-teal transition"
+        >Education</a
+      >
+      <a
+        href="#contact"
+        class="mobile-link text-white hover:text-teal transition"
+        >Contact</a
+      >
+      <a
+        href="#"
+        class="border border-teal px-8 py-3 rounded-full text-teal backdrop-blur-sm"
+        >Resume</a
+      >
+    </div>
+
+    <main class="max-w-5xl mx-auto px-6 relative z-10">
+      <!-- Hero Section (enhanced with floating effect) -->
+      <section class="min-h-screen flex flex-col justify-center relative">
+        <div class="animate-float" style="animation-duration: 5s">
+          <p class="font-mono text-teal mb-4 text-sm tracking-wider">
+            Hi, my name is
+          </p>
+          <h1
+            class="text-6xl md:text-8xl font-bold text-white mb-5 tracking-tight"
+          >
+            Aditya Banerjee.
+          </h1>
+          <h2
+            class="text-4xl md:text-6xl font-bold text-slate/90 mb-6 leading-tight"
+          >
+            I craft web & mobile experiences.
+          </h2>
+          <p class="text-lightSlate max-w-xl text-lg mb-8 leading-relaxed">
+            I’m a software developer specialized Webapplication and Mobile App.
+            Currently focused on
+            <span class="text-teal font-medium">ASP.NET Core</span> and
+            <span class="text-teal font-medium">React.js</span>.
+            <span class="text-teal font-medium">Android Java</span>.
+          </p>
+        </div>
+        <div class="flex flex-wrap gap-5 text-slate text-sm font-mono mb-12">
+          <span
+            class="flex items-center gap-2 glass-card px-3 py-1.5 rounded-full backdrop-blur-sm"
+            ><i class="fa-solid fa-location-dot text-teal"></i> Howrah, West
+            Bengal</span
+          >
+          <a
+            href="mailto:I_am_aditya01@outlook.com"
+            class="flex items-center gap-2 glass-card px-3 py-1.5 rounded-full hover:text-teal transition-all"
+            ><i class="fa-solid fa-envelope text-teal"></i>
+            I_am_aditya01@outlook.com</a
+          >
+        </div>
+        <a
+          href="#contact"
+          class="hero-cta w-max px-9 py-4 border border-teal text-teal rounded-full font-mono text-sm tracking-wide backdrop-blur-sm hover:bg-teal/10 transition-all duration-300 flex items-center gap-2 group"
+          >Check out my work!
+          <i
+            class="fa-solid fa-arrow-right-long group-hover:translate-x-1 transition"
+          ></i
+        ></a>
+      </section>
+
+      <!-- About Section (Glass refined) -->
+      <section id="about" class="py-28 scroll-mt-24">
+        <h2 class="text-3xl font-bold mb-10 flex items-center text-white">
+          <span class="font-mono text-teal text-xl mr-3">01.</span> About Me
+          <span
+            class="h-px bg-lightNavy/60 flex-grow ml-5 backdrop-blur-sm"
+          ></span>
+        </h2>
+        <div
+          class="grid md:grid-cols-3 gap-12 text-lightSlate text-lg leading-relaxed"
+        >
+          <div class="md:col-span-2 space-y-4">
+            <p>
+              Hello! I'm Aditya, and I love creating things that live on the
+              internet. Since 2021, I’ve contributed to
+              <span class="text-teal font-semibold"
+                >10+ production-grade systems</span
+              >
+              used by thousands of users.
+            </p>
+            <p>
+              I'm a full-stack developer passionate about clean architectures,
+              API design, and smooth UIs.
+            </p>
+            <ul class="grid grid-cols-2 gap-3 mt-3 font-mono text-sm text-teal">
+              <li>
+                <i class="fa-regular fa-circle-check mr-2"></i>ASP.NET Core
+              </li>
+              <li>
+                <i class="fa-regular fa-circle-check mr-2"></i>React + Tailwind
+              </li>
+              <li>
+                <i class="fa-regular fa-circle-check mr-2"></i>Android (Java)
+              </li>
+              <li><i class="fa-regular fa-circle-check mr-2"></i>SQL Server</li>
+            </ul>
+          </div>
+
+          <div class="relative group mx-auto md:mx-0 w-64 h-64">
+            <div
+              class="absolute inset-0 border-2 border-teal/40 rounded-full translate-x-3 translate-y-3 group-hover:translate-x-0 group-hover:translate-y-0 transition-transform duration-500"
+            ></div>
+
+            <div
+              class="relative w-full h-full rounded-full overflow-hidden border-2 border-white/10 glass-card p-1"
+            >
+              <img
+                src="assets/profile.jpeg"
+                alt="Aditya Banerjee"
+                class="w-full h-full object-cover rounded-full grayscale hover:grayscale-0 transition-all duration-500"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Skills: Glassmorphism + refined tags -->
+      <section id="skills" class="py-28 scroll-mt-24">
+        <h2 class="text-3xl font-bold mb-12 flex items-center text-white">
+          <span class="font-mono text-teal text-xl mr-3">02.</span> Toolkit &
+          Stack
+          <span class="h-px bg-lightNavy/60 flex-grow ml-5"></span>
+        </h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-7">
+          <div class="glass-card p-7 rounded-2xl">
+            <h3 class="text-white font-bold mb-5 flex items-center gap-3">
+              <i class="fa-solid fa-code text-teal text-xl"></i>Languages
+            </h3>
+            <div class="flex flex-wrap">
+              <span class="skill-tag">C#</span
+              ><span class="skill-tag">Java</span
+              ><span class="skill-tag">JavaScript</span
+              ><span class="skill-tag">Python</span
+              ><span class="skill-tag">TypeScript</span>
+            </div>
+          </div>
+          <div class="glass-card p-7 rounded-2xl">
+            <h3 class="text-white font-bold mb-5 flex items-center gap-3">
+              <i class="fa-solid fa-display text-teal text-xl"></i>Frontend
+            </h3>
+            <div class="flex flex-wrap">
+              <span class="skill-tag">React.js</span
+              ><span class="skill-tag">TailwindCSS</span
+              ><span class="skill-tag">HTML5/CSS3</span
+              ><span class="skill-tag">Bootstrap</span>
+            </div>
+          </div>
+          <div class="glass-card p-7 rounded-2xl">
+            <h3 class="text-white font-bold mb-5 flex items-center gap-3">
+              <i class="fa-solid fa-server text-teal text-xl"></i>Backend
+            </h3>
+            <div class="flex flex-wrap">
+              <span class="skill-tag">.NET Core</span
+              ><span class="skill-tag">ASP.NET MVC</span
+              ><span class="skill-tag">REST API</span
+              ><span class="skill-tag">Node.js</span>
+            </div>
+          </div>
+          <div class="glass-card p-7 rounded-2xl">
+            <h3 class="text-white font-bold mb-5 flex items-center gap-3">
+              <i class="fa-solid fa-mobile-alt text-teal text-xl"></i>Mobile
+            </h3>
+            <div class="flex flex-wrap">
+              <span class="skill-tag">Android SDK</span
+              ><span class="skill-tag">Java (Android)</span
+              ><span class="skill-tag">GPS & Maps</span
+              ><span class="skill-tag">XML Layouts</span>
+            </div>
+          </div>
+          <div class="glass-card p-7 rounded-2xl">
+            <h3 class="text-white font-bold mb-5 flex items-center gap-3">
+              <i class="fa-solid fa-database text-teal text-xl"></i>Databases
+            </h3>
+            <div class="flex flex-wrap">
+              <span class="skill-tag">SQL Server</span
+              ><span class="skill-tag">MySQL</span
+              ><span class="skill-tag">MongoDB (basic)</span>
+            </div>
+          </div>
+          <div class="glass-card p-7 rounded-2xl">
+            <h3 class="text-white font-bold mb-5 flex items-center gap-3">
+              <i class="fa-solid fa-screwdriver-wrench text-teal text-xl"></i
+              >DevTools
+            </h3>
+            <div class="flex flex-wrap">
+              <span class="skill-tag">Git/GitHub</span
+              ><span class="skill-tag">Postman</span
+              ><span class="skill-tag">VS Code</span
+              ><span class="skill-tag">Azure DevOps</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Experience: modern timeline with glassmorphism -->
+      <section id="experience" class="py-28 scroll-mt-24">
+        <h2 class="text-3xl font-bold mb-12 flex items-center text-white">
+          <span class="font-mono text-teal text-xl mr-3">03.</span> Work
+          Experience
+          <span class="h-px bg-lightNavy/60 flex-grow ml-5"></span>
+        </h2>
+        <div class="space-y-12">
+          <div
+            class="relative pl-8 border-l-2 border-teal/30 group transition-all duration-300 hover:border-teal"
+          >
+            <div
+              class="absolute -left-[9px] top-0 w-4 h-4 bg-navy border-2 border-teal rounded-full shadow-glow"
+            ></div>
+            <div class="glass-card p-6 rounded-2xl backdrop-blur-sm">
+              <h3 class="text-xl font-bold text-white">
+                Software Developer
+                <span class="text-teal">@ Schoolnet India Ltd.</span>
+              </h3>
+              <p
+                class="font-mono text-xs text-teal/80 uppercase mt-1 flex items-center gap-2"
+              >
+                <i class="fa-regular fa-calendar"></i> September 2023 – Present
+              </p>
+              <ul class="mt-5 space-y-3 text-slate">
+                <li class="flex items-start gap-3">
+                  <i class="fa-solid fa-caret-right text-teal mt-1"></i
+                  >Developed 5+ Android enterprise apps, serving 1,000+ active
+                  users with offline sync features.
+                </li>
+                <li class="flex items-start gap-3">
+                  <i class="fa-solid fa-caret-right text-teal mt-1"></i
+                  >Maintained and enhanced 6+ web apps using ASP.NET Core MVC,
+                  boosting performance by 25%.
+                </li>
+                <li class="flex items-start gap-3">
+                  <i class="fa-solid fa-caret-right text-teal mt-1"></i
+                  >Optimized SQL queries reducing response times by 30% and
+                  improved data retrieval.
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div
+            class="relative pl-8 border-l-2 border-teal/20 group transition-all duration-300 hover:border-teal"
+          >
+            <div
+              class="absolute -left-[9px] top-0 w-4 h-4 bg-navy border-2 border-teal rounded-full"
+            ></div>
+            <div class="glass-card p-6 rounded-2xl backdrop-blur-sm">
+              <h3 class="text-xl font-bold text-white">
+                Software Developer
+                <span class="text-teal">@ Excel Infocom Pvt. Ltd.</span>
+              </h3>
+              <p class="font-mono text-xs text-teal/80 uppercase mt-1">
+                <i class="fa-regular fa-calendar"></i> Jan 2023 – Sep 2023
+              </p>
+              <ul class="mt-5 space-y-3 text-slate">
+                <li class="flex items-start gap-3">
+                  <i class="fa-solid fa-caret-right text-teal mt-1"></i>Working
+                  on the WB SCERT Esekha Project, handling React components and
+                  maintaining the backend with .NET MVC.
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Education -->
+      <section id="education" class="py-28 scroll-mt-24">
+        <h2 class="text-3xl font-bold mb-12 flex items-center text-white">
+          <span class="font-mono text-teal text-xl mr-3">04.</span> Academic
+          Journey
+          <span class="h-px bg-lightNavy/60 flex-grow ml-5"></span>
+        </h2>
+        <div class="grid gap-7 md:grid-cols-2">
+          <div
+            class="glass-card p-7 rounded-2xl flex gap-5 items-start backdrop-blur-md transition-all hover:scale-[1.01]"
+          >
+            <div class="bg-teal/15 p-4 rounded-2xl text-teal">
+              <i class="fa-solid fa-graduation-cap text-2xl"></i>
+            </div>
+            <div>
+              <h3 class="text-white font-bold text-xl">
+                Master of Computer Applications
+              </h3>
+              <p class="text-lightSlate text-sm">
+                Amity University Online (Noida) | 2025 – Pursuing
+              </p>
+              <span class="inline-block mt-2 text-teal/80 text-xs font-mono"
+                >Specialization: Advanced Web Technologies</span
+              >
+            </div>
+          </div>
+          <div
+            class="glass-card p-7 rounded-2xl flex gap-5 items-start backdrop-blur-md transition-all hover:scale-[1.01]"
+          >
+            <div class="bg-teal/15 p-4 rounded-2xl text-teal">
+              <i class="fa-solid fa-user-graduate text-2xl"></i>
+            </div>
+            <div>
+              <h3 class="text-white font-bold text-xl">
+                Bachelor of Computer Applications
+              </h3>
+              <p class="text-lightSlate text-sm">
+                Amity University Online | 2021 – 2024 | CGPA: 8.7
+              </p>
+              <span class="inline-block mt-2 text-teal/80 text-xs font-mono"
+                >Awards: Academic Excellence Scholarship</span
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact section with phone number & LinkedIn profile integrated -->
+      <section
+        id="contact"
+        class="py-28 scroll-mt-24 text-center max-w-2xl mx-auto"
+      >
+        <p class="font-mono text-teal text-sm mb-4 tracking-wider">
+          05. Get In Touch
+        </p>
+        <h2 class="text-5xl md:text-6xl font-bold text-white mb-6">
+          Let’s Connect
+        </h2>
+        <p class="text-lightSlate text-lg mb-10 leading-relaxed">
+          I’m actively looking for new opportunities,My inbox and phone are
+          always open — I'll get back to you as soon as possible.
+        </p>
+
+        <!-- Contact cards with email and mobile number (transparent UI) -->
+        <div class="flex flex-col sm:flex-row justify-center gap-5 mb-12">
+          <!-- Email Card -->
+          <a
+            href="mailto:I_am_aditya01@outlook.com"
+            class="contact-info-card flex items-center justify-center gap-4 px-6 py-4 rounded-2xl backdrop-blur-md transition-all group"
+          >
+            <div
+              class="bg-teal/20 p-3 rounded-full text-teal group-hover:bg-teal/30 transition"
+            >
+              <i class="fa-regular fa-envelope text-xl"></i>
+            </div>
+            <div class="text-left">
+              <p class="text-xs text-teal/70 uppercase tracking-wide">Email</p>
+              <p class="text-white font-mono text-sm md:text-base">
+                I_am_aditya01@outlook.com
+              </p>
+            </div>
+          </a>
+
+          <!-- Mobile Card with number 6289308035 (click-to-call) -->
+          <a
+            href="tel:+916289308035"
+            class="contact-info-card flex items-center justify-center gap-4 px-6 py-4 rounded-2xl backdrop-blur-md transition-all group"
+          >
+            <div
+              class="bg-teal/20 p-3 rounded-full text-teal group-hover:bg-teal/30 transition"
+            >
+              <i class="fa-solid fa-phone-alt text-xl"></i>
+            </div>
+            <div class="text-left">
+              <p class="text-xs text-teal/70 uppercase tracking-wide">
+                Mobile / WhatsApp
+              </p>
+              <p
+                class="text-white font-mono text-sm md:text-base tracking-wide"
+              >
+                +91 62893 08035
+              </p>
+            </div>
+          </a>
+        </div>
+
+        <div class="flex flex-col items-center gap-8">
+          <a
+            href="mailto:I_am_aditya01@outlook.com"
+            class="group px-8 py-4 bg-glass rounded-full backdrop-blur-lg border border-teal/60 text-teal font-mono text-base hover:bg-teal/10 transition-all flex items-center gap-2"
+            >Say Hello via Email
+            <i
+              class="fa-regular fa-paper-plane group-hover:translate-x-1 transition"
+            ></i
+          ></a>
+          <div class="flex space-x-12 text-2xl text-lightSlate">
+            <a
+              href="https://github.com/Adityawe"
+              target="_blank"
+              class="hover:text-teal transition-all hover:scale-110 duration-200"
+              ><i class="fa-brands fa-github"></i
+            ></a>
+            <a
+              href="https://www.linkedin.com/in/aditya-banerjee-304056393"
+              target="_blank"
+              class="hover:text-teal transition-all hover:scale-110"
+              ><i class="fa-brands fa-linkedin"></i
+            ></a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- footer transparent style -->
+    <footer
+      class="py-10 text-center font-mono text-[11px] text-slate border-t border-white/5 backdrop-blur-sm"
+    >
+      <a
+        href="https://github.com"
+        target="_blank"
+        class="hover:text-teal transition-colors inline-flex flex-col items-center gap-2"
+      >
+        Designed & Built by Aditya Banerjee
+      </a>
+    </footer>
+
+    <script>
+      // Mobile menu toggle
+      const menuBtn = document.getElementById("menu-btn");
+      const closeBtn = document.getElementById("close-btn");
+      const mobileMenu = document.getElementById("mobile-menu");
+      const mobileLinks = document.querySelectorAll(".mobile-link");
+
+      function toggleMenu() {
+        mobileMenu.classList.toggle("hidden-menu");
+        document.body.classList.toggle("overflow-hidden");
+      }
+
+      menuBtn?.addEventListener("click", toggleMenu);
+      closeBtn?.addEventListener("click", toggleMenu);
+      mobileLinks.forEach((link) => link.addEventListener("click", toggleMenu));
+
+      // Intersection Observer for reveal animation with transparent fade-up
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("opacity-100", "translate-y-0");
+              entry.target.classList.remove("opacity-0", "translate-y-8");
+            }
+          });
+        },
+        { threshold: 0.12, rootMargin: "0px 0px -20px 0px" },
+      );
+
+      document.querySelectorAll("section").forEach((section) => {
+        section.classList.add(
+          "transition-all",
+          "duration-700",
+          "ease-out",
+          "opacity-0",
+          "translate-y-8",
+        );
+        observer.observe(section);
+      });
+
+      // Add initial hero animation force
+      window.addEventListener("load", () => {
+        document
+          .querySelector("section")
+          ?.classList.add("opacity-100", "translate-y-0");
+      });
+    </script>
+  </body>
+</html>
