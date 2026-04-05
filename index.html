@@ -1,22 +1,25 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
     <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+      property="og:title"
+      content="Aditya Banerjee | Full Stack Developer"
     />
-    <title>
-      Aditya Banerjee | Full Stack Developer — Portfolio
-    </title>
-    <!-- Tailwind CSS -->
+    <meta
+      property="og:description"
+      content="Software Developer specializing in ASP.NET Core, React, and Android Development."
+    />
+    <meta property="og:image" content="URL_TO_YOUR_PREVIEW_IMAGE" />
+    <meta
+      name="description"
+      content="Portfolio of Aditya Banerjee, a Full Stack Developer based in West Bengal."
+    />
+    <title>Aditya Banerjee | Full Stack Developer — Portfolio</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Font Awesome 6 -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
-    <!-- Google Fonts: Inter + Fira Code -->
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700&family=Fira+Code:wght@400;500;600&display=swap"
       rel="stylesheet"
@@ -230,26 +233,20 @@
         <div
           class="hidden md:flex items-center space-x-10 font-mono text-[11px] uppercase tracking-wider"
         >
-          <a href="#about" class="nav-link text-lightSlate hover:text-teal"
+          <a href="#about" class="nav-link text-white/80 hover:text-teal"
             ><span class="text-teal"></span> About</a
           >
-          <a href="#skills" class="nav-link text-lightSlate hover:text-teal"
+          <a href="#skills" class="nav-link text-white/80 hover:text-teal"
             ><span class="text-teal"></span> Skills</a
           >
-          <a href="#experience" class="nav-link text-lightSlate hover:text-teal"
+          <a href="#experience" class="nav-link text-white/80 hover:text-teal"
             ><span class="text-teal"></span> Experience</a
           >
-          <a href="#education" class="nav-link text-lightSlate hover:text-teal"
+          <a href="#education" class="nav-link text-white/80 hover:text-teal"
             ><span class="text-teal"></span> Education</a
           >
-          <a href="#contact" class="nav-link text-lightSlate hover:text-teal"
+          <a href="#contact" class="nav-link text-white/80 hover:text-teal"
             ><span class="text-teal"></span> Contact</a
-          >
-          <a
-            href="#"
-            target="_blank"
-            class="border border-teal/70 px-5 py-2 rounded-full text-teal text-[12px] hover:bg-teal/10 hover:border-teal transition-all backdrop-blur-sm"
-            >Resume</a
           >
         </div>
 
@@ -318,12 +315,12 @@
           >
             I craft web & mobile experiences.
           </h2>
-          <p class="text-lightSlate max-w-xl text-lg mb-8 leading-relaxed">
-            I’m a software developer specialized Webapplication and Mobile App.
+          <p class="text-white/80 max-w-xl text-lg mb-8 leading-relaxed">
+            I’m a software developer specialized in Web and Mobile Applications.
             Currently focused on
             <span class="text-teal font-medium">ASP.NET Core</span> and
             <span class="text-teal font-medium">React.js</span>.
-            <span class="text-teal font-medium">Android Java</span>.
+            <span class="text-teal font-medium">Android (Java)</span>.
           </p>
         </div>
         <div class="flex flex-wrap gap-5 text-slate text-sm font-mono mb-12">
@@ -352,13 +349,13 @@
       <!-- About Section (Glass refined) -->
       <section id="about" class="py-28 scroll-mt-24">
         <h2 class="text-3xl font-bold mb-10 flex items-center text-white">
-          <span class="font-mono text-teal text-xl mr-3">01.</span> About Me
+          About Me
           <span
             class="h-px bg-lightNavy/60 flex-grow ml-5 backdrop-blur-sm"
           ></span>
         </h2>
         <div
-          class="grid md:grid-cols-3 gap-12 text-lightSlate text-lg leading-relaxed"
+          class="grid md:grid-cols-3 gap-12 text-white/80 text-lg leading-relaxed"
         >
           <div class="md:col-span-2 space-y-4">
             <p>
@@ -408,8 +405,7 @@
       <!-- Skills: Glassmorphism + refined tags -->
       <section id="skills" class="py-28 scroll-mt-24">
         <h2 class="text-3xl font-bold mb-12 flex items-center text-white">
-          <span class="font-mono text-teal text-xl mr-3">02.</span> Toolkit &
-          Stack
+          Toolkit & Stack
           <span class="h-px bg-lightNavy/60 flex-grow ml-5"></span>
         </h2>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-7">
@@ -420,9 +416,7 @@
             <div class="flex flex-wrap">
               <span class="skill-tag">C#</span
               ><span class="skill-tag">Java</span
-              ><span class="skill-tag">JavaScript</span
-              ><span class="skill-tag">Python</span
-              ><span class="skill-tag">TypeScript</span>
+              ><span class="skill-tag">JavaScript</span>
             </div>
           </div>
           <div class="glass-card p-7 rounded-2xl">
@@ -433,7 +427,8 @@
               <span class="skill-tag">React.js</span
               ><span class="skill-tag">TailwindCSS</span
               ><span class="skill-tag">HTML5/CSS3</span
-              ><span class="skill-tag">Bootstrap</span>
+              ><span class="skill-tag">Bootstrap</span
+              ><span class="skill-tag">Flutter (basic)</span>
             </div>
           </div>
           <div class="glass-card p-7 rounded-2xl">
@@ -444,7 +439,8 @@
               <span class="skill-tag">.NET Core</span
               ><span class="skill-tag">ASP.NET MVC</span
               ><span class="skill-tag">REST API</span
-              ><span class="skill-tag">Node.js</span>
+              ><span class="skill-tag">Node.js</span
+              ><span class="skill-tag">Dart (basic)</span>
             </div>
           </div>
           <div class="glass-card p-7 rounded-2xl">
@@ -456,6 +452,7 @@
               ><span class="skill-tag">Java (Android)</span
               ><span class="skill-tag">GPS & Maps</span
               ><span class="skill-tag">XML Layouts</span>
+              <span class="skill-tag">Flutter</span>
             </div>
           </div>
           <div class="glass-card p-7 rounded-2xl">
@@ -465,7 +462,8 @@
             <div class="flex flex-wrap">
               <span class="skill-tag">SQL Server</span
               ><span class="skill-tag">MySQL</span
-              ><span class="skill-tag">MongoDB (basic)</span>
+              ><span class="skill-tag">Postgre SQL (basic)</span
+              ><span class="skill-tag">SQL Lite</span>
             </div>
           </div>
           <div class="glass-card p-7 rounded-2xl">
@@ -486,8 +484,7 @@
       <!-- Experience: modern timeline with glassmorphism -->
       <section id="experience" class="py-28 scroll-mt-24">
         <h2 class="text-3xl font-bold mb-12 flex items-center text-white">
-          <span class="font-mono text-teal text-xl mr-3">03.</span> Work
-          Experience
+          Work Experience
           <span class="h-px bg-lightNavy/60 flex-grow ml-5"></span>
         </h2>
         <div class="space-y-12">
@@ -510,18 +507,23 @@
               <ul class="mt-5 space-y-3 text-slate">
                 <li class="flex items-start gap-3">
                   <i class="fa-solid fa-caret-right text-teal mt-1"></i
-                  >Developed 5+ Android enterprise apps, serving 1,000+ active
-                  users with offline sync features.
+                  >Developed and maintained 10 + Android applications with over
+                  500 daily active users. Monitored app usage and optimized
+                  online synchronization features.
                 </li>
                 <li class="flex items-start gap-3">
                   <i class="fa-solid fa-caret-right text-teal mt-1"></i
-                  >Maintained and enhanced 6+ web apps using ASP.NET Core MVC,
-                  boosting performance by 25%.
+                  >Maintained and enhanced over six web applications using
+                  ASP.NET Core MVC. Responsibilities included resolving bugs,
+                  improving UI components, and implementing Stored Procedure
+                  (SP) changes.
                 </li>
                 <li class="flex items-start gap-3">
                   <i class="fa-solid fa-caret-right text-teal mt-1"></i
-                  >Optimized SQL queries reducing response times by 30% and
-                  improved data retrieval.
+                  >Optimized SQL queries and stored procedures, reducing
+                  response times and improving data retrieval efficiency.
+                  Implemented strategic indexing and automated SQL Jobs for a
+                  1TB+ live database, ensuring high performance and reliability.
                 </li>
               </ul>
             </div>
@@ -543,7 +545,7 @@
               <ul class="mt-5 space-y-3 text-slate">
                 <li class="flex items-start gap-3">
                   <i class="fa-solid fa-caret-right text-teal mt-1"></i>Working
-                  on the WB SCERT Esekha Project, handling React components and
+                  on the WB SCERT E-sekha Project, handling React components and
                   maintaining the backend with .NET MVC.
                 </li>
               </ul>
@@ -555,8 +557,7 @@
       <!-- Education -->
       <section id="education" class="py-28 scroll-mt-24">
         <h2 class="text-3xl font-bold mb-12 flex items-center text-white">
-          <span class="font-mono text-teal text-xl mr-3">04.</span> Academic
-          Journey
+          Academic Journey
           <span class="h-px bg-lightNavy/60 flex-grow ml-5"></span>
         </h2>
         <div class="grid gap-7 md:grid-cols-2">
@@ -570,12 +571,9 @@
               <h3 class="text-white font-bold text-xl">
                 Master of Computer Applications
               </h3>
-              <p class="text-lightSlate text-sm">
+              <p class="text-white/80 text-sm">
                 Amity University Online (Noida) | 2025 – Pursuing
               </p>
-              <span class="inline-block mt-2 text-teal/80 text-xs font-mono"
-                >Specialization: Advanced Web Technologies</span
-              >
             </div>
           </div>
           <div
@@ -588,12 +586,9 @@
               <h3 class="text-white font-bold text-xl">
                 Bachelor of Computer Applications
               </h3>
-              <p class="text-lightSlate text-sm">
+              <p class="text-white/80 text-sm">
                 Amity University Online | 2021 – 2024 | CGPA: 8.7
               </p>
-              <span class="inline-block mt-2 text-teal/80 text-xs font-mono"
-                >Awards: Academic Excellence Scholarship</span
-              >
             </div>
           </div>
         </div>
@@ -604,14 +599,11 @@
         id="contact"
         class="py-28 scroll-mt-24 text-center max-w-2xl mx-auto"
       >
-        <p class="font-mono text-teal text-sm mb-4 tracking-wider">
-          05. Get In Touch
-        </p>
         <h2 class="text-5xl md:text-6xl font-bold text-white mb-6">
           Let’s Connect
         </h2>
-        <p class="text-lightSlate text-lg mb-10 leading-relaxed">
-          I’m actively looking for new opportunities,My inbox and phone are
+        <p class="text-white/80 text-lg mb-10 leading-relaxed">
+          I’m actively looking for new opportunities, My inbox and phone are
           always open — I'll get back to you as soon as possible.
         </p>
 
@@ -667,7 +659,7 @@
               class="fa-regular fa-paper-plane group-hover:translate-x-1 transition"
             ></i
           ></a>
-          <div class="flex space-x-12 text-2xl text-lightSlate">
+          <div class="flex space-x-12 text-2xl text-white/80">
             <a
               href="https://github.com/Adityawe"
               target="_blank"
